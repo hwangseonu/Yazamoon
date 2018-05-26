@@ -79,6 +79,10 @@ func (c App) Apply() revel.Result {
 		c.Flash.Error("이미 출석 체크가 되어 있습니다.")
 		return c.Redirect(App.Main)
 	}
+	if i23 == "out" {
+		c.Flash.Error("이미 외출신청이 되있습니다.")
+		return c.Redirect(App.Main)
+	}
 	i23 = "miss"
 	//i20 = "check"
 	return c.Redirect(App.Main)
@@ -104,8 +108,10 @@ func (c App) Check() revel.Result {
 	}
 	if i23 == "miss" {
 		i23 = "check"
-	} else {
-		c.Flash.Error("먼저 야자신청을 해주세요!")
+	}
+	if i23 == "out" {
+		c.Flash.Error("이미 외출신청이 되있습니다.")
+		return c.Redirect(App.Main)
 	}
 	return c.Redirect(App.Main)
 }
