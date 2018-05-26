@@ -36,12 +36,12 @@ body {
   background-color: #fff;
 }
 .item-1 .header img {
-  height: 40px;
+  height: 30px;
   margin: 10px 0;
 }
 .item-1 .header .box {
   position: absolute;
-  top: 20px;
+  top: 14px;
   right: 2%;
 }
 .item-1 .header .box a {
@@ -391,6 +391,12 @@ body {
 */
 /*모바일*/
 @media (max-width : 1024px) {
+  .black .login-box {
+    width: 90%;
+  }
+  .black .signup-box {
+    width: 90%;
+  }
   .item-1 .header img {
     height: 24px;
     margin: 12px 0 10px 0;
