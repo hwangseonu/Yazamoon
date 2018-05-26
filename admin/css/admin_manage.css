@@ -1,0 +1,27 @@
+.delbtn{
+    width : 60px;
+    background-color : #ffffff00;
+    border: 0px solid;
+}
+.cont{
+    width: 100%;
+}
+.conta{
+    width : 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 70%;
+}
+.tab{
+    text-align : center;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    height : 4rem;
+}
+td{
+    border-left : 1px solid;
+    border-right: 1px solid;
+}
+.imgbtn{
+    width: 5rem;
+}

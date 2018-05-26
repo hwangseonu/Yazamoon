@@ -89,6 +89,9 @@ func (c App) ApplyOut() revel.Result {
 	if i23 == "check" {
 		c.Flash.Error("이미 출석 체크가 되어 있습니다.")
 		return c.Redirect(App.Main)
+	} else if i23 == "gap" {
+		c.Flash.Error("야자 신청을 하고 해주세요.")
+		return c.Redirect(App.Main)
 	}
 	i23 = "out"
 	return c.Redirect(App.Main)
