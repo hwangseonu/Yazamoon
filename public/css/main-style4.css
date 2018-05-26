@@ -1,0 +1,147 @@
+/*드래그 색상 변경*/
+::selection {
+  background-color: #424242;
+  color: #fff;
+}
+::-moz-selection {
+  background-color: #424242;
+  color: #fff;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+ol,ul {
+  list-style: none;
+}
+html {
+  font-family: 'Nanum Gothic', sans-serif;
+}
+body {
+  text-align: center;
+  margin: 0;
+  background-color: #F4F4F4;
+}
+/*@media (min-width : 1025px) {*/
+.header {
+  width: 100%;
+  text-align: center;
+  background-color: rgb(101,78,163,1);
+}
+.header img {
+  height: 40px;
+  margin: 10px 0;
+}
+.header .box {
+  position: absolute;
+  top: 20px;
+  right: 2%;
+}
+.header .box a {
+  font-size: 14px;
+  color: #fff;
+  margin: 0 5px;
+}
+
+.navbar {
+  width: 100%;
+  height: 48px;
+  text-align: center;
+  background-color: #fff;
+}
+.navbar ul {
+  display: inline-flex;
+  flex-direction: row;
+  height: 100%;
+  margin: 0;
+}
+.navbar ul a {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  padding: 0 16px;
+  border-bottom: 2px solid #fff;
+  transition: .3s ease;
+}
+.navbar ul a:hover {
+  border-bottom: 2px solid rgb(101,78,163,1);
+}
+.navbar ul a.focus {
+  color: rgb(101,78,163,1);
+  border-bottom: 2px solid rgb(101,78,163,1);
+}
+
+.contents {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  background-color: #fff;
+  margin: 60px auto;
+}
+.contents .box {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  background-color: #fff;
+  padding-top: 80px;
+}
+.contents .box {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 100px;
+}
+.contents .title {
+  font-size: 30px;
+  margin-top: 0;
+  margin-bottom: 60px;
+}
+.contents img {
+  width: 100%;
+}
+
+
+.footer {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  background-color: #353535;
+}
+.footer .copyright {
+  color: #fff;
+  margin-left: 20px;
+  font-size: 11px;
+}
+.footer .to_top {
+  color: #fff;
+  font-size: 25px;
+  position: absolute;
+  right: 10px;
+  margin-right: 30px;
+}
+
+/*
+  mm       mm
+  mmm     mmm
+  mmmm   mmmm
+  mm mm mm mm
+  mm  mmm  mm
+  mm  mm   mm
+*/
+/*모바일*/
+@media (max-width : 1024px) {
+  .navbar ul {
+    padding: 0;
+  }
+  .contents {
+    width: 90%;
+  }
+  .contents .box {
+    width: 90%;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,23 @@
+.conta{
+    height: 70%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.blank{
+    width : 20px;
+}
+table{
+    width: 100%;
+    height: 100%;
+}
+tr{
+    border-top : 1px solid;
+    border-bottom : 1px solid;
+    height: 4rem;
+}
+td{
+    border-left : 1px solid;
+    border-right: 1px solid;
+    text-align: center;
+}

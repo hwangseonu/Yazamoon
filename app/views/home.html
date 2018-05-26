@@ -1,0 +1,82 @@
+<div class="box">
+  <div class="clock">
+    <h3 id="date"></h3>
+    <h1 id="time"></h1>
+  </div>
+  <div class="seat">
+    <div class="colum">
+      <ul>
+        <li><img src="/public/img/student-{{.i1}}.png"></li>
+        <li><img src="/public/img/student-{{.i2}}.png"></li>
+        <li><img src="/public/img/student-{{.i3}}.png"></li>
+        <li><img src="/public/img/student-{{.i4}}.png"></li>
+        <li><img src="/public/img/student-{{.i5}}.png"></li>
+        <li><img src="/public/img/student-{{.i6}}.png"></li>
+        <li><img src="/public/img/student-{{.i7}}.png"></li>
+      </ul>
+      <ul>
+        <li><img src="/public/img/student-{{.i8}}.png"></li>
+        <li><img src="/public/img/student-{{.i9}}.png"></li>
+        <li><img src="/public/img/student-{{.i10}}.png"></li>
+        <li><img src="/public/img/student-{{.i11}}.png"></li>
+        <li><img src="/public/img/student-{{.i12}}.png"></li>
+        <li><img src="/public/img/student-{{.i13}}.png"></li>
+        <li><img src="/public/img/student-{{.i14}}.png"></li>
+      </ul>
+    </div>
+    <div class="colum">
+      <ul>
+        <li><img src="/public/img/student-{{.i15}}.png"></li>
+        <li><img src="/public/img/student-{{.i16}}.png"></li>
+        <li><img src="/public/img/student-{{.i17}}.png"></li>
+        <li><img src="/public/img/student-{{.i18}}.png"></li>
+        <li><img src="/public/img/student-{{.i19}}.png"></li>
+        <li><img src="/public/img/student-{{.i20}}.png"></li>
+        <li><img src="/public/img/student-{{.i21}}.png"></li>
+      </ul>
+      <ul>
+        <li><img src="/public/img/student-{{.i22}}.png"></li>
+        <li><img src="/public/img/student-{{.i23}}.png"></li>
+        <li><img src="/public/img/student-{{.i24}}.png"></li>
+        <li><img src="/public/img/student-{{.i25}}.png"></li>
+        <li><img src="/public/img/student-{{.i26}}.png"></li>
+        <li><img src="/public/img/student-{{.i27}}.png"></li>
+        <li><img src="/public/img/student-{{.i28}}.png"></li>
+      </ul>
+    </div>
+    <div class="colum">
+      <ul>
+        <li><img src="/public/img/student-{{.i29}}.png"></li>
+        <li><img src="/public/img/student-{{.i30}}.png"></li>
+        <li><img src="/public/img/student-{{.i31}}.png"></li>
+        <li><img src="/public/img/student-{{.i32}}.png"></li>
+        <li><img src="/public/img/student-{{.i33}}.png"></li>
+        <li><img src="/public/img/student-{{.i34}}.png"></li>
+        <li><img src="/public/img/student-{{.i35}}.png"></li>
+      </ul>
+      <ul>
+        <li><img src="/public/img/student-{{.i36}}.png"></li>
+        <li><img src="/public/img/student-{{.i37}}.png"></li>
+        <li><img src="/public/img/student-{{.i38}}.png"></li>
+        <li><img src="/public/img/student-{{.i39}}.png"></li>
+        <li><img src="/public/img/student-{{.i40}}.png"></li>
+        <li><img src="/public/img/student-{{.i41}}.png"></li>
+        <li><img src="/public/img/student-{{.i42}}.png"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<a class="c-check" href="/main/check">출석 체크</a>
+<script>
+  window.addEventListener('load', () => {
+    function updateInfo() {
+      let date = (moment().format("YYYY-MM-DD"));
+      let time = moment().format("hh:mm");
+      $("#date").html(`<h3 id="date">${date}</h3>`);
+      $("#time").html(`<h1 id="date">${time}</h1>`);
+      setTimeout(updateInfo, 1000);
+    }
+
+    updateInfo();
+  });
+</script>
