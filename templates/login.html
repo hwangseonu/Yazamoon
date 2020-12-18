@@ -1,0 +1,13 @@
+<div id="login" class="black-wrapper hidden" onclick="onClickBlank(event, 'login')">
+  <div class="form-wrapper">
+    <div class="form-header">
+      <h1 class="title">Login</h1>
+      <i class="close fa fa-times" onclick="formClose('login')"></i>
+    </div>
+    <form method="POST" action="/login">
+      <input name="username" type="text" placeholder="Username">
+      <input name="password" type="password" placeholder="Password">
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>

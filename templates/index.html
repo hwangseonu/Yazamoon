@@ -1,19 +1,23 @@
 <!DOCTYPE>
 <html lang="ko">
   <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/static/css/layout.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/form.css">\
     <script src="https://kit.fontawesome.com/3e8894a35f.js" crossorigin="anonymous"></script>
     <title>YAZAMOON</title>
   </head>
   <body>
+    {% include "login.html" %}
+    {% include "register.html" %}
     <div id="header">
       <div class="blank"></div>
       <a href="/" class="logo">
         <img src="/static/img/logo/logo-black.png" alt="logo-black">
       </a>
       <div class="user-menu">
-        <span>Sign up</span>
-        <span>Sign in</span>
+        <span onclick="formOpen('login')">Login</span>
+        <span onclick="formOpen('register')">Register</span>
       </div>
     </div>
     <div id="item-1">
@@ -26,7 +30,7 @@
           <p>여러 불편한 사항 및, 복잡한 사항들을 개선하고자 합니다</p>
           <p>YAZAMOON은 여러분의 학업을 응원합니다.</p>
         </div>
-        <button class="login">이용하기</button>
+        <button class="login" onclick="formOpen('login')">이용하기</button>
       </div>
     </div>
     <div id="item-2">
@@ -116,5 +120,20 @@
         </a>
       </div>
     </div>
+    <script type="application/javascript">
+      function formClose(id) {
+        document.getElementById(id).classList.add('hidden')
+      }
+
+      function formOpen(id) {
+        document.getElementById(id).classList.remove('hidden')
+      }
+
+      function onClickBlank(event, id) {
+        if (event.target.classList.contains('black-wrapper')) {
+          formClose(id)
+        }
+      }
+    </script>
   </body>
 </html>
