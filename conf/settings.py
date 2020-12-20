@@ -126,3 +126,5 @@ STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 
+AUTH_USER_MODEL = 'app.UserModel'
+
