@@ -5,6 +5,7 @@
       <i class="close fa fa-times" onclick="formClose('login')"></i>
     </div>
     <form method="POST" action="/login">
+      {% csrf_token %}
       {{ login.as_p }}
       <button type="submit">Login</button>
     </form>
