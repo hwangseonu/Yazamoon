@@ -4,28 +4,12 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/static/css/layout.css">
     <link rel="stylesheet" type="text/css" href="/static/css/form.css">
-    \
+    <script src="/static/js/script.js"></script>
     <script src="https://kit.fontawesome.com/3e8894a35f.js" crossorigin="anonymous"></script>
     <title>YAZAMOON</title>
   </head>
   <body>
-    {% include "login.html" %}
-    {% include "register.html" %}
-    <div id="header">
-      <div class="blank"></div>
-      <a href="/" class="logo">
-        <img src="/static/img/logo/logo-black.png" alt="logo-black">
-      </a>
-      <div class="user-menu">
-        {% if user.is_authenticated %}
-          <span>{{ user.name }}님 환영합니다.</span>
-          <a href="/logout">로그아웃</a>
-        {% else %}
-          <span onclick="formOpen('login')">로그인</span>
-          <span onclick="formOpen('register')">회원가입</span>
-        {% endif %}
-      </div>
-    </div>
+    {% include 'header.html' %}
     <div id="item-1">
       <div class="description">
         <img src="/static/img/logo/logo-text-white.png" alt="logo-text" class="logo">
@@ -130,26 +114,5 @@
         </a>
       </div>
     </div>
-    <script type="application/javascript">
-      function formClose(id) {
-        document.getElementById(id).classList.add('hidden')
-      }
-
-      function formOpen(id) {
-        document.getElementById(id).classList.remove('hidden')
-      }
-
-      function onClickBlank(event, id) {
-        if (event.target.classList.contains('black-wrapper')) {
-          formClose(id)
-        }
-      }
-
-      {% if messages %}
-        {% for message in messages %}
-          alert('{{message}}');
-        {% endfor %}
-      {% endif %}
-    </script>
   </body>
 </html>

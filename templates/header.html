@@ -1,0 +1,31 @@
+{% include "login.html" %}
+{% include "register.html" %}
+
+<div id="header">
+  {% if messages %}
+    <script type="application/javascript">
+      {% for msg in messages %}
+        alert('{{ msg.message }}')
+      {% endfor %}
+    </script>
+  {% endif %}
+
+  <div class="header">
+    <div class="blank"></div>
+    <a href="/" class="logo">
+      <img src="/static/img/logo/logo-black.png" alt="logo-black">
+    </a>
+    <div class="user-menu">
+      {% if user.is_authenticated %}
+        <span>{{ user.name }}님 환영합니다.</span>
+        <a href="/logout">로그아웃</a>
+      {% else %}
+        <span onclick="formOpen('login')">로그인</span>
+        <span onclick="formOpen('register')">회원가입</span>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+
