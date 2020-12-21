@@ -3,9 +3,9 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 
 
 class VerifyCode(models.Model):
-    code = models.CharField(max_length=6)
+    code = models.CharField(max_length=6, unique=True)
     name = models.CharField(max_length=255)
-    student_id = models.CharField(max_length=5)
+    student_id = models.CharField(max_length=5, unique=True)
 
 
 class UserManager(BaseUserManager):

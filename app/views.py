@@ -1,8 +1,12 @@
+from django.contrib.auth.models import Group
+from django.http.request import HttpRequest
 from django.shortcuts import render, redirect
 from django.views import View
-from django.http.request import HttpRequest
+from django import forms
+
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+
 from .forms import LoginForm, RegisterForm
 
 
@@ -41,9 +45,17 @@ class RegisterView(View):
     def post(self, request: HttpRequest):
         form = RegisterForm(request.POST, prefix='register')
         if form.is_valid():
-            form.save()
-            messages.success(request, '회원가입되었습니다.')
+            try:
+                user = form.save()
+                try:
+                    group = Group.objects.get(name=user.student_id[:3])
+                except Group.DoesNotExist:
+                    group = Group(name=user.student_id[:3]).save()
+                user.groups.add(group)
+                user.save()
+                messages.success(request, '회원가입되었습니다.')
+            except forms.ValidationError as e:
+                messages.error(request, e)
         else:
             messages.error(request, form.errors)
         return redirect('index')
-

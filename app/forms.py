@@ -47,10 +47,15 @@ class RegisterForm(ModelForm):
         password2 = self.cleaned_data.get('confirm_password')
         if password1 and password2:
             if password1 != password2:
-                raise forms.ValidationError("Passwords don't match")
+                raise forms.ValidationError('패스워드가 일치하지 않습니다.')
             return password2
 
+        if not VerifyCode.objects.exists(code=self.cleaned_data['verify_code']):
+            raise forms.ValidationError('유효하지 않은 인증코드입니다.')
+
     def save(self, commit=True):
+        self.confirm()
+
         user = super(RegisterForm, self).save(commit=False)
 
         user.email = UserManager.normalize_email(self.cleaned_data['email'])
@@ -60,6 +65,8 @@ class RegisterForm(ModelForm):
         user.student_id = code.student_id
         user.name = code.name
 
+        code.delete()
+
         if commit:
-            user.save()
+            user = user.save()
         return user
