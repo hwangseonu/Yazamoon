@@ -36,7 +36,11 @@
           <p>여러 불편한 사항 및, 복잡한 사항들을 개선하고자 합니다</p>
           <p>YAZAMOON은 여러분의 학업을 응원합니다.</p>
         </div>
-        <button class="login" onclick="formOpen('login')">이용하기</button>
+        {% if user.is_authenticated %}
+          <button class="using" onclick="window.location.href='#'">이용하기</button>
+        {% else %}
+          <button class="using" onclick="formOpen('login')">이용하기</button>
+        {% endif %}
       </div>
     </div>
     <div id="item-2">

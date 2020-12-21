@@ -24,13 +24,11 @@ class LoginView(View):
             user = authenticate(email=email, password=password)
             if user:
                 login(request, user=user)
-                return redirect('index')
             else:
                 messages.error(request,  '아이디나 비밀번호가 일치하지 않습니다.')
-                return redirect('index')
         else:
             messages.error(request, form.errors)
-            return redirect('index')
+        return redirect('index')
 
 
 class LogoutView(View):
@@ -41,4 +39,11 @@ class LogoutView(View):
 
 class RegisterView(View):
     def post(self, request: HttpRequest):
-        pass
+        form = RegisterForm(request.POST, prefix='register')
+        if form.is_valid():
+            form.save()
+            messages.success(request, '회원가입되었습니다.')
+        else:
+            messages.error(request, form.errors)
+        return redirect('index')
+

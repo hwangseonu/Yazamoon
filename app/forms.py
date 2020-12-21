@@ -56,7 +56,9 @@ class RegisterForm(ModelForm):
         user.email = UserManager.normalize_email(self.cleaned_data['email'])
         user.set_password(self.cleaned_data['password'])
 
-        VerifyCode.objects.filter(code=self.cleaned_data['verify_code'])
+        code = VerifyCode.objects.get(code=self.cleaned_data['verify_code'])
+        user.student_id = code.student_id
+        user.name = code.name
 
         if commit:
             user.save()

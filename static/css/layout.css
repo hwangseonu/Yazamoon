@@ -81,7 +81,7 @@ h1, p {
     font-weight: lighter;
 }
 
-#item-1 .description .login {
+#item-1 .description .using {
     background: none;
     color: white;
     padding: 12px 40px;
@@ -92,12 +92,12 @@ h1, p {
     cursor: pointer;
 }
 
-#item-1 .description .login:hover {
+#item-1 .description .using:hover {
     color: black;
     background-color: white;
 }
 
-#item-1 .description .login:focus {
+#item-1 .description .using:focus {
     outline: none;
 }
 

@@ -15,3 +15,6 @@ class UserAdmin(admin.ModelAdmin):
         'name',
         'student_id'
     )
+
+
+admin.site.register(VerifyCode)
