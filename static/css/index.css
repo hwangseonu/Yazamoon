@@ -1,9 +1,12 @@
+#contents {
+    margin-top: 55px;
+}
+
 #item-1 {
     width: 100%;
     height: 100vh;
     background: url("/static/img/background/item-1.jpg") fixed center;
     background-size: cover;
-    padding-top: 55px;
     box-sizing: border-box;
 }
 

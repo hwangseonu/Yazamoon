@@ -59,3 +59,8 @@ class RegisterView(View):
         else:
             messages.error(request, form.errors)
         return redirect('index')
+
+
+class SeatsView(View):
+    def get(self, request):
+        return render(request, 'app/seats.html')
