@@ -4,16 +4,17 @@
 
 #item-1 {
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 55px);
     background: url("/static/img/background/item-1.jpg") fixed center;
     background-size: cover;
     box-sizing: border-box;
+
 }
 
 #item-1 .description {
     color: white;
-    margin-top: 10%;
-    margin-left: 10%;
+    padding-top: 10%;
+    padding-left: 10%;
 }
 
 #item-1 .description .logo {
