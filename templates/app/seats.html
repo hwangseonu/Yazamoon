@@ -14,71 +14,22 @@
     {% include "header.html" %}
     <div id="contents" class="contents">
       <div class="datetime">
-        <h2 id="date"></h2>
-        <h1 id="clock"></h1>
+        <p id="date" class="date"></p>
+        <p id="clock" class="clock"></p>
       </div>
-      <div id="seats" class="seat">
-        <div class="colum">
-          <ul>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-          </ul>
-          <ul>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-          </ul>
-        </div>
-        <div class="colum">
-          <ul>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-          </ul>
-          <ul>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-          </ul>
-        </div>
-        <div class="colum">
-          <ul>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-          </ul>
-          <ul>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-            <li><img src="/static/img/student/student-check.png"></li>
-          </ul>
-        </div>
+      <div id="seats" class="seats">
+        {% for line in seats %}
+          <div class="line">
+            {% for status in line %}
+              <div class="seat">
+                <img src="/static/img/student/student-{{ status }}.png" alt="{{ status }}"/>
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
       </div>
     </div>
+    {% include "footer.html" %}
+
   </body>
 </html>

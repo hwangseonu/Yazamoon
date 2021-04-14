@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, GroupManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, Group
+import json
 
 
 class VerifyCode(models.Model):
@@ -19,8 +20,12 @@ class UserManager(BaseUserManager):
             student_id=student_id,
         )
 
+        group = Group.objects.get_or_create(name=student_id[:3])
+        user.groups.add(group)
+
         user.set_password(password)
         user.save(using=self._db)
+
         return user
 
     def create_superuser(self, email, name, student_id, password):
@@ -51,3 +56,14 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name', 'student_id']
+
+
+class SeatsModel(models.Model):
+    class_id = models.IntegerField(primary_key=True)
+    seats = models.TextField(default=json.dumps([["check"] * 5] * 5))
+
+    def set_seats(self, x):
+        self.seats = json.dumps(x)
+
+    def get_seats(self):
+        return json.loads(self.seats)

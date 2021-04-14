@@ -1,3 +1,5 @@
+import json
+
 from django.contrib.auth.models import Group
 from django.http.request import HttpRequest
 from django.shortcuts import render, redirect
@@ -8,6 +10,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
 from .forms import LoginForm, RegisterForm
+from .models import SeatsModel
 
 
 class IndexView(View):
@@ -29,7 +32,7 @@ class LoginView(View):
             if user:
                 login(request, user=user)
             else:
-                messages.error(request,  '아이디나 비밀번호가 일치하지 않습니다.')
+                messages.error(request, '아이디나 비밀번호가 일치하지 않습니다.')
         else:
             messages.error(request, form.errors)
         return redirect('index')
@@ -63,4 +66,12 @@ class RegisterView(View):
 
 class SeatsView(View):
     def get(self, request):
-        return render(request, 'app/seats.html')
+        user = request.user
+
+        if user.is_anonymous:
+            return redirect('/')
+
+        class_id = user.student_id[:3]
+        seats, _ = SeatsModel.objects.get_or_create(class_id=class_id)
+
+        return render(request, 'app/seats.html', {'seats': seats.get_seats()})

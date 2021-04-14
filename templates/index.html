@@ -23,7 +23,7 @@
             <p>YAZAMOON은 여러분의 학업을 응원합니다.</p>
           </div>
           {% if user.is_authenticated %}
-            <button class="using" onclick="window.location.href='#'">이용하기</button>
+            <button class="using" onclick="window.location.href='/seats'">이용하기</button>
           {% else %}
             <button class="using" onclick="formOpen('login')">이용하기</button>
           {% endif %}
@@ -102,19 +102,7 @@
           </div>
         </div>
       </div>
-      <div id="footer">
-        <div class="copyright">
-          <img src="/static/img/logo/logo.jpg" alt="logo">
-          <span>&copy; 2020 Yazamoon</span>
-        </div>
-        <div class="links">
-          <a href="https://github.com/hwangseonu/Yazamoon" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://www.facebook.com/profile.php?id=100022921478671" target="_blank">
-            <i class="fab fa-facebook"></i>
-          </a>
-        </div>
+      {% include "footer.html" %}
       </div>
     </div>
   </body>

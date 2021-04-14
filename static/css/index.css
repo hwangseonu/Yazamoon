@@ -95,17 +95,17 @@
 }
 
 #item-2 .hwangseonu {
-    background: url("https://avatars1.githubusercontent.com/u/30190259?s=460&v=4");
+    background: url("/static/img/logo/hwangseonu.png");
     background-size: contain;
 }
 
 #item-2 .jara {
-    background: url("https://scontent-gmp1-1.xx.fbcdn.net/v/t1.0-9/130814592_1836437656514036_8405568114610262153_o.png?_nc_cat=101&ccb=2&_nc_sid=09cbfe&_nc_ohc=Z-Q1oVzNwsoAX_362h3&_nc_ht=scontent-gmp1-1.xx&oh=def75b5dbadb0f1ebe808b2cd2f68579&oe=60004608");
+    background: url("/static/img/logo/jara.png");
     background-size: contain;
 }
 
 #item-2 .luna {
-    background: url("https://scontent-gmp1-1.xx.fbcdn.net/v/t1.0-9/55959603_2272841909638387_6862002633876439040_n.png?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=i5vMaxK8w3oAX-tGojV&_nc_ht=scontent-gmp1-1.xx&oh=4c5e3849938f569d3da56eac4d6a5c15&oe=60031956");
+    background: url("/static/img/logo/luna.png");
     background-size: contain;
 }
 
