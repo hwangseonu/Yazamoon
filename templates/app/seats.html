@@ -11,6 +11,12 @@
     <title>YAZAMOON</title>
   </head>
   <body>
+    {% if not have_seat %}
+      <script>
+          alert("지정된 좌석이 없습니다. 빈 좌석을 선택하여 주세요.");
+      </script>
+    {% endif %}
+
     {% include "header.html" %}
     <div id="contents" class="contents">
       <div class="datetime">
@@ -20,9 +26,20 @@
       <div id="seats" class="seats">
         {% for line in seats %}
           <div class="line">
-            {% for status in line %}
+            {% for seat in line %}
               <div class="seat">
-                <img src="/static/img/student/student-{{ status }}.png" alt="{{ status }}"/>
+                {% if seat == None %}
+                  <img src="/static/img/student/student-miss.png" alt="miss"/>
+                  {% if not have_seat %}
+                    <form method="post">
+                      <input type="hidden" name="position" value="{{ forloop.counter }},{{ forloop.parentloop.counter }}">
+                      <button>선택하기</button>
+                    </form>
+                  {% endif %}
+                {% else %}
+                  <img src="/static/img/student/student-{{ seat.status }}.png" alt="{{ seat.status }}"/>
+                  <p>{{ seat.student.name }}</p>
+                {% endif %}
               </div>
             {% endfor %}
           </div>

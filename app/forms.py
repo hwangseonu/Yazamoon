@@ -50,7 +50,7 @@ class RegisterForm(ModelForm):
                 raise forms.ValidationError('패스워드가 일치하지 않습니다.')
             return password2
 
-        if not VerifyCode.objects.exists(code=self.cleaned_data['verify_code']):
+        if not VerifyCode.objects.filter(code=self.cleaned_data['verify_code']).exists():
             raise forms.ValidationError('유효하지 않은 인증코드입니다.')
 
     def save(self, commit=True):
@@ -68,5 +68,6 @@ class RegisterForm(ModelForm):
         code.delete()
 
         if commit:
-            user = user.save()
+            user.save()
+
         return user

@@ -7,7 +7,7 @@
 여러 불편한 사항 및, 복잡한 사항들을 개선하고자 합니다  
 YAZAMOON은 여러분의 학업을 응원합니다.  
 
-## installation
+## Installation
 
 ```shell
 git clone https://github.com/hwangseonu/Yazamoon

@@ -17,4 +17,6 @@ class UserAdmin(admin.ModelAdmin):
     )
 
 
+admin.site.register(ClassModel)
+admin.site.register(SeatModel)
 admin.site.register(VerifyCode)

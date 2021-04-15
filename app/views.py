@@ -1,5 +1,3 @@
-import json
-
 from django.contrib.auth.models import Group
 from django.http.request import HttpRequest
 from django.shortcuts import render, redirect
@@ -10,7 +8,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
 from .forms import LoginForm, RegisterForm
-from .models import SeatsModel
+from .models import ClassModel, SeatModel
 
 
 class IndexView(View):
@@ -50,10 +48,7 @@ class RegisterView(View):
         if form.is_valid():
             try:
                 user = form.save()
-                try:
-                    group = Group.objects.get(name=user.student_id[:3])
-                except Group.DoesNotExist:
-                    group = Group(name=user.student_id[:3]).save()
+                group = Group.objects.get_or_create(name=user.student_id[:3])
                 user.groups.add(group)
                 user.save()
                 messages.success(request, '회원가입되었습니다.')
@@ -72,6 +67,35 @@ class SeatsView(View):
             return redirect('/')
 
         class_id = user.student_id[:3]
-        seats, _ = SeatsModel.objects.get_or_create(class_id=class_id)
+        cls, _ = ClassModel.objects.get_or_create(class_id=class_id)
+        seats = [[None] * 5 for _ in range(5)]
 
-        return render(request, 'app/seats.html', {'seats': seats.get_seats()})
+        have_seat = False
+        for s in cls.seatmodel_set.all():
+            if s.student.student_id == user.student_id:
+                have_seat = True
+            row, column = s.get_position()
+            seats[column-1][row-1] = s
+
+        return render(request, 'app/seats.html', {'seats': seats, 'have_seat': have_seat})
+
+    def post(self, request):
+        import re
+        pos_regex = re.compile(r"^\d,\d$")
+
+        user = request.user
+
+        if user.is_anonymous:
+            return redirect("index")
+
+        pos = request.POST.get("position", None)
+
+        if pos is None or not pos_regex.match(pos):
+            return redirect("seats")
+
+        if SeatModel.objects.filter(cls_id=user.student_id[:3], position=pos).exists():
+            messages.error(request, "빈 자리를 선택해주세요.")
+            return redirect("seats")
+
+        SeatModel.objects.create(student=user, cls_id=user.student_id[:3], position=pos)
+        return redirect('seats')
