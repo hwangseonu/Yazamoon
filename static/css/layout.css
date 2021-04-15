@@ -29,7 +29,7 @@ h1, p {
   top: 0;
   left: 0;
   z-index: 10;
-  width: 100%;
+  width: 100vw;
 }
 
 #header .header {
@@ -41,11 +41,17 @@ h1, p {
   background: white;
 }
 
+#header .header a {
+  display: flex;
+  align-items: center;
+}
+
 #header .header .logo img {
   height: 30px;
 }
 
 #header .header .user-menu {
+  display: flex;
   position: absolute;
   right: 55px;
 }
