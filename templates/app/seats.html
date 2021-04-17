@@ -19,9 +19,11 @@
 
     {% include "header.html" %}
     <div id="contents" class="contents">
-      <div class="datetime">
-        <p id="date" class="date"></p>
-        <p id="clock" class="clock"></p>
+      <div class="contents-header">
+        <div class="datetime">
+          <p id="date" class="date"></p>
+          <p id="clock" class="clock"></p>
+        </div>
       </div>
       <div id="seats" class="seats">
         {% for line in seats %}
@@ -32,8 +34,9 @@
                   <img src="/static/img/student/student-miss.png" alt="miss"/>
                   {% if not have_seat %}
                     <form method="post">
-                      <input type="hidden" name="position" value="{{ forloop.counter }},{{ forloop.parentloop.counter }}">
-                      <button>선택하기</button>
+                      <input type="hidden" name="position"
+                             value="{{ forloop.counter }},{{ forloop.parentloop.counter }}">
+                      <button class="select">선택하기</button>
                     </form>
                   {% endif %}
                 {% else %}
@@ -45,8 +48,18 @@
           </div>
         {% endfor %}
       </div>
-    </div>
+      {% if have_seat %}
+        {% if user.is_admin %}
+          <form class="check" action="/admin" method="get">
+            <button>출석관리</button>
+          </form>
+        {% else %}
+          <form class="check" action="/attend" method="post">
+            <button>출석하기</button>
+          </form>
+        {% endif %}
+        </div>
+      {% endif %}
     {% include "footer.html" %}
-
   </body>
 </html>

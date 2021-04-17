@@ -1,6 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from django.http.request import HttpRequest
 from django.shortcuts import render, redirect
+from django.utils.decorators import method_decorator
 from django.views import View
 from django import forms
 
@@ -9,6 +11,8 @@ from django.contrib.auth import authenticate, login, logout
 
 from .forms import LoginForm, RegisterForm
 from .models import ClassModel, SeatModel
+
+import re
 
 
 class IndexView(View):
@@ -48,7 +52,7 @@ class RegisterView(View):
         if form.is_valid():
             try:
                 user = form.save()
-                group = Group.objects.get_or_create(name=user.student_id[:3])
+                group, _ = Group.objects.get_or_create(name=user.student_id[:3])
                 user.groups.add(group)
                 user.save()
                 messages.success(request, '회원가입되었습니다.')
@@ -60,11 +64,9 @@ class RegisterView(View):
 
 
 class SeatsView(View):
+    @method_decorator(login_required(login_url='/'))
     def get(self, request):
         user = request.user
-
-        if user.is_anonymous:
-            return redirect('/')
 
         class_id = user.student_id[:3]
         cls, _ = ClassModel.objects.get_or_create(class_id=class_id)
@@ -79,15 +81,10 @@ class SeatsView(View):
 
         return render(request, 'app/seats.html', {'seats': seats, 'have_seat': have_seat})
 
+    @method_decorator(login_required(login_url='/'))
     def post(self, request):
-        import re
         pos_regex = re.compile(r"^\d,\d$")
-
         user = request.user
-
-        if user.is_anonymous:
-            return redirect("index")
-
         pos = request.POST.get("position", None)
 
         if pos is None or not pos_regex.match(pos):

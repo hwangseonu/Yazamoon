@@ -48,7 +48,6 @@ class RegisterForm(ModelForm):
         if password1 and password2:
             if password1 != password2:
                 raise forms.ValidationError('패스워드가 일치하지 않습니다.')
-            return password2
 
         if not VerifyCode.objects.filter(code=self.cleaned_data['verify_code']).exists():
             raise forms.ValidationError('유효하지 않은 인증코드입니다.')

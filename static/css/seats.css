@@ -8,6 +8,19 @@
   height: calc(100vh - 210px);
 }
 
+.contents-header {
+  margin-bottom: 15px;
+}
+
+.check button {
+  background: none;
+  border-radius: 2px;
+  border: 1px solid black;
+  width: 80px;
+  height: 30px;
+  margin-top: 15px;
+}
+
 .datetime {
   display: flex;
   justify-content: center;
@@ -18,7 +31,6 @@
   height: 150px;
   background: url("/static/img/background/green-board.png") no-repeat;
   background-size: 300px 150px;
-  margin-bottom: 55px;
 }
 
 .datetime .date {
@@ -60,5 +72,14 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  width: 70px;
   height: 80px;
+}
+
+.seat button {
+  background: none;
+  border: 1px solid black;
+  border-radius: 2px;
+  margin-top: 5px;
+  cursor: pointer;
 }

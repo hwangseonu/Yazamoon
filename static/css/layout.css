@@ -13,6 +13,7 @@ html {
 
 body {
   margin: 0;
+  -webkit-user-select: none;
 }
 
 a {
@@ -22,6 +23,10 @@ a {
 
 h1, p {
   margin: 0;
+}
+
+button {
+  cursor: pointer;
 }
 
 #header {
