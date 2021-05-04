@@ -96,3 +96,22 @@ class SeatsView(View):
 
         SeatModel.objects.create(student=user, cls_id=user.student_id[:3], position=pos)
         return redirect('seats')
+
+
+class AttendanceView(View):
+    @method_decorator(login_required(login_url='/'))
+    def post(self, request):
+        user = request.user
+        seat = SeatModel.objects.filter(student=user).first()
+
+        if seat is not None:
+            if seat.status == 'check':
+                messages.error(request, '이미 출석되었습니다.')
+            else:
+                seat.status = 'check'
+                seat.save()
+                messages.success(request, '출석되었습니다.')
+        else:
+            messages.error(request, '등록된 자리가 없습니다.')
+
+        return redirect('seats')
