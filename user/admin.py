@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from .models import UserModel, VerifyCode
 
 
 @admin.register(UserModel)
@@ -17,6 +17,4 @@ class UserAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(ClassModel)
-admin.site.register(SeatModel)
 admin.site.register(VerifyCode)

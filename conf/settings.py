@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app'
+    'app',
+    'user',
+    'seats'
 ]
 
 MIDDLEWARE = [
@@ -126,5 +128,5 @@ STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 
-AUTH_USER_MODEL = 'app.UserModel'
+AUTH_USER_MODEL = 'user.UserModel'
 
